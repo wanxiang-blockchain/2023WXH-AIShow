@@ -2,7 +2,7 @@
 #
 # substrate
 #
-# pipelines can be triggered manually in the web
+# pipelines can be triggered manually in the frontend
 #
 # Currently the file is divided into subfiles. Each stage has a different file which
 # can be found here: scripts/ci/gitlab/pipeline/<stage_name>.yml
@@ -160,7 +160,7 @@ default:
 
 .test-refs:
   rules:
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME == "master"
     - if: $CI_COMMIT_REF_NAME =~ /^[0-9]+$/ # PRs
@@ -172,7 +172,7 @@ default:
   rules:
     - if: $CI_COMMIT_REF_NAME == "master" && $CI_PIPELINE_SOURCE == "pipeline"  && $CI_IMAGE =~ /staging$/
       when: never
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME == "master"
     - if: $CI_COMMIT_REF_NAME =~ /^[0-9]+$/ # PRs
@@ -182,7 +182,7 @@ default:
   rules:
     - if: $CI_PIPELINE_SOURCE == "pipeline"
       when: never
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME == "master"
     - if: $CI_COMMIT_REF_NAME =~ /^[0-9]+$/ # PRs
@@ -193,7 +193,7 @@ default:
   rules:
     - if: $CI_PIPELINE_SOURCE == "pipeline"
       when: never
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME =~ /^[0-9]+$/ # PRs
 
@@ -201,7 +201,7 @@ default:
   rules:
     - if: $CI_PIPELINE_SOURCE == "pipeline"
       when: never
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME == "master"
     - if: $CI_COMMIT_REF_NAME =~ /^v[0-9]+\.[0-9]+.*$/ # i.e. v1.0, v2.1rc1
@@ -211,7 +211,7 @@ default:
   rules:
     - if: $CI_PIPELINE_SOURCE == "pipeline"
       when: never
-    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "frontend"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_COMMIT_REF_NAME == "master"
     - if: $CI_COMMIT_REF_NAME =~ /^v[0-9]+\.[0-9]+.*$/ # i.e. v1.0, v2.1rc1
